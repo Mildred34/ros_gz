@@ -76,7 +76,7 @@ Start the parameter bridge which will watch the specified topics.
 ```
 # Shell A:
 . ~/bridge_ws/install/setup.bash
-ros2 run ros_gz_bridge parameter_bridge /chatter@std_msgs/msg/String@ignition.msgs.StringMsg
+ros2 run ros_gz_bridge parameter_bridge /chatter@std_msgs/msg/String@gz.msgs.StringMsg
 ```
 
 Now we start the ROS listener.
@@ -91,7 +91,7 @@ Now we start the Gazebo Transport talker.
 
 ```
 # Shell C:
-ign topic -t /chatter -m ignition.msgs.StringMsg -p 'data:"Hello"'
+ign topic -t /chatter -m gz.msgs.StringMsg -p 'data:"Hello"'
 ```
 
 ## Example 1b: ROS 2 talker and Gazebo Transport listener
@@ -101,7 +101,7 @@ Start the parameter bridge which will watch the specified topics.
 ```
 # Shell A:
 . ~/bridge_ws/install/setup.bash
-ros2 run ros_gz_bridge parameter_bridge /chatter@std_msgs/msg/String@ignition.msgs.StringMsg
+ros2 run ros_gz_bridge parameter_bridge /chatter@std_msgs/msg/String@gz.msgs.StringMsg
 ```
 
 Now we start the Gazebo Transport listener.
@@ -146,7 +146,7 @@ Then we start the parameter bridge with the previous topic.
 ```
 # Shell B:
 . ~/bridge_ws/install/setup.bash
-ros2 run ros_gz_bridge parameter_bridge /rgbd_camera/image@sensor_msgs/msg/Image@ignition.msgs.Image
+ros2 run ros_gz_bridge parameter_bridge /rgbd_camera/image@sensor_msgs/msg/Image@gz.msgs.Image
 ```
 
 Now we start the ROS GUI:
@@ -187,7 +187,7 @@ On terminal B, we start a ROS 2 listener:
 
 And terminal C, publish an Gazebo message:
 
-`ign topic -t /chatter -m ignition.msgs.StringMsg -p 'data:"Hello"'`
+`ign topic -t /chatter -m gz.msgs.StringMsg -p 'data:"Hello"'`
 
 At this point, you should see the ROS 2 listener echoing the message.
 
@@ -235,29 +235,29 @@ bridge may be specified:
  # Set just topic name, applies to both
 - topic_name: "chatter"
   ros_type_name: "std_msgs/msg/String"
-  gz_type_name: "ignition.msgs.StringMsg"
+  gz_type_name: "gz.msgs.StringMsg"
 
 # Set just ROS topic name, applies to both
 - ros_topic_name: "chatter_ros"
   ros_type_name: "std_msgs/msg/String"
-  gz_type_name: "ignition.msgs.StringMsg"
+  gz_type_name: "gz.msgs.StringMsg"
 
 # Set just GZ topic name, applies to both
 - gz_topic_name: "chatter_ign"
   ros_type_name: "std_msgs/msg/String"
-  gz_type_name: "ignition.msgs.StringMsg"
+  gz_type_name: "gz.msgs.StringMsg"
 
 # Set each topic name explicitly
 - ros_topic_name: "chatter_both_ros"
   gz_topic_name: "chatter_both_ign"
   ros_type_name: "std_msgs/msg/String"
-  gz_type_name: "ignition.msgs.StringMsg"
+  gz_type_name: "gz.msgs.StringMsg"
 
 # Full set of configurations
 - ros_topic_name: "ros_chatter"
   gz_topic_name: "ign_chatter"
   ros_type_name: "std_msgs/msg/String"
-  gz_type_name: "ignition.msgs.StringMsg"
+  gz_type_name: "gz.msgs.StringMsg"
   subscriber_queue: 5       # Default 10
   publisher_queue: 6        # Default 10
   lazy: true                # Default "false"
